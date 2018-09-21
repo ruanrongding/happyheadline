@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="tab_index_title">
+        <item>新鲜</item>
+        <item>上升</item>
+        <item>人气</item>
+        <item>热评</item>
+    </string-array>
+
+
+
+</resources>
