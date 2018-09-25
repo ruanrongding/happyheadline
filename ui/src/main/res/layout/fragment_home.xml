@@ -21,7 +21,7 @@
         app:tabBackground="@drawable/bg_ripple_rless"
         app:tabGravity="center"
         app:tabIndicatorColor="@color/colorAccent"
-        app:tabIndicatorHeight="@dimen/dp_5"
+        app:tabIndicatorHeight="@dimen/dp_3"
         app:tabLineOffset="@dimen/dp_12"
         app:tabMode="fixed"
         app:tabSelectedTextColor="@color/colorPrimary"

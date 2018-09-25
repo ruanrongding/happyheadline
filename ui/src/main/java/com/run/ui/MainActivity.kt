@@ -94,10 +94,9 @@ class MainActivity : BaseActivity<MainContract.MainPresenter>(), MainContract.Ma
         viewpager.offscreenPageLimit = 4
         setStatus(0)
 
-        mPresenter!!.statisticsActive(this@MainActivity)
+        mPresenter!!.statisticsActive(this@MainActivity
+        )
     }
-
-
     //==============================================fragment集合====================================
     inner class MainFragmentAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
         override fun getItem(position: Int): Fragment {

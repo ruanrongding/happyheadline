@@ -19,8 +19,6 @@ class HomeFragment : BaseFragment<Nothing>() {
             return HomeFragment()
         }
     }
-
-
     override fun initContentView(): Int {
         return R.layout.fragment_home
     }
