@@ -21,5 +21,7 @@ android {
 }
 
 dependencies {
-    api project(':presenter')
+    api project(':share')
+    api project(':vedio')
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
 }

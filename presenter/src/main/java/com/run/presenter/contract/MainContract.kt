@@ -16,7 +16,7 @@ interface MainContract {
     interface MainView : BaseMvpView {
     }
 
-    class MainPresenter(private val v: MainView) : BaseMvpPresenter() {
+    class MainPresenter(private val v: MainView) : BaseMvpPresenter(v) {
         /**
          * 记录激活页面
          */
@@ -31,7 +31,5 @@ interface MainContract {
                 }
             })
         }
-
-
     }
 }

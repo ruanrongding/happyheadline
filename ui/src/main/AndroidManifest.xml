@@ -1,10 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.run.ui">
 
-
     <application>
         <activity android:name=".MainActivity" />
+        <activity android:name=".activity.PhotoViewActivity" />
+        <activity android:name=".activity.WebPhotoActivity" />
+        <activity
+            android:name=".activity.VedioDetailActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullAppTheme" />
+        <activity android:name=".login.LoginActivity">
+            <intent-filter>
+                <action android:name="com.run.ui.login.happyheadline.LoginActivity" />
 
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".login.MobileLoginActivity" />
+        <activity android:name=".login.RegisterActivity" />
+        <activity android:name=".login.BindPhoneActivity" />
+        <activity android:name=".activity.SettingActivity" />
+        <activity android:name=".activity.AboutActivity" />
+        <activity android:name=".activity.EditPersionActivity" />
+        <activity android:name=".activity.ModifyNumberActivity"></activity>
     </application>
 
 </manifest>

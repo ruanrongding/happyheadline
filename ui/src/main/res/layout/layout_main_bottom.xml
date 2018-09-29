@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:background="@drawable/bg_ripple_rless"
-        android:drawableTop="@drawable/host_selector"
+        android:drawableTop="@drawable/find_selector"
         android:gravity="center"
         android:padding="@dimen/dp_5"
         android:text="@string/main_vedio"

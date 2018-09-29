@@ -29,6 +29,7 @@ abstract class BaseActivity<T : BaseMvpPresenter> : AppCompatActivity(), View.On
         super.onDestroy()
         UActivityManager.removeActivity(this)
         if (mPresenter != null) {
+            mPresenter!!.view = null
             mPresenter = null
         }
     }
@@ -74,6 +75,7 @@ abstract class BaseActivity<T : BaseMvpPresenter> : AppCompatActivity(), View.On
     override fun showErr(errorType: Int, msg: String) {
         showMsg(msg)
     }
+
     override fun showMsg(msg: String?) {
         if (TextUtils.isEmpty(msg)) return
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()

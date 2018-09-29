@@ -7,6 +7,10 @@
         <item>热评</item>
     </string-array>
 
+    <string-array name="tab_circle_title">
+        <item>圈子</item>
+        <item>关注</item>
+    </string-array>
 
 
 </resources>

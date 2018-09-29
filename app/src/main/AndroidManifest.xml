@@ -19,9 +19,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".GuideActivity"
             android:theme="@style/FullAppTheme"></activity>
+
+        <!-- 微信分享返回 -->
+        <activity
+            android:name="com.yun.happyheadline.wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
     </application>
 
 </manifest>

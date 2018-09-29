@@ -49,17 +49,15 @@ class HomeFragment : BaseFragment<Nothing>() {
     private inner class SeniorityPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
         var mTilte: Array<String> = resources.getStringArray(R.array.tab_index_title)
         private var fragment: Fragment? = null
-
         override fun getPageTitle(position: Int): CharSequence? {
             return mTilte[position]
         }
-
         override fun getItem(position: Int): Fragment? {
             fragment = when (position) {
-                0 -> ArticleFragment.newInstance("day")
-                1 -> ArticleFragment.newInstance("week")
-                2 -> ArticleFragment.newInstance("month")
-                else -> ArticleFragment.newInstance("day")
+                0 -> ArticleFragment.newInstance("news")
+                1 -> ArticleFragment.newInstance("day")
+                2 -> ArticleFragment.newInstance("week")
+                else -> ArticleFragment.newInstance("month")
             }
             return fragment
         }
@@ -68,5 +66,6 @@ class HomeFragment : BaseFragment<Nothing>() {
             return mTilte.size
         }
     }
+
 
 }

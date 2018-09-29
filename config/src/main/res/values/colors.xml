@@ -25,4 +25,12 @@
 
 
     <color name="colorPoint">#323232</color>
+
+
+    <color name="colorNick">#7495C2</color>
+
+
+    <color name="colorWeChat">#35C020</color>
+
+    <color name="colorCode">#FDC425</color>
 </resources>

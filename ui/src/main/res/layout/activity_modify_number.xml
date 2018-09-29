@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackGround"
+    android:orientation="vertical"
+    tools:context=".activity.ModifyNumberActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/backView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:background="@drawable/bg_ripple"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp_10"
+            android:paddingRight="@dimen/dp_10"
+            android:src="@mipmap/iv_back" />
+
+        <TextView
+            android:id="@+id/titleView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text=""
+            android:textColor="@color/color_f3"
+            android:textSize="@dimen/sp_18" />
+
+    </RelativeLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_20" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_5"
+        android:background="@drawable/shape_write"
+        android:minHeight="@dimen/dp_80"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/inputView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:hint="请输入师傅ID"
+            android:padding="@dimen/dp_10"
+            android:inputType="text"
+            android:text=""
+            android:maxLength="50"
+            android:textColor="@color/color_f3"
+            android:textSize="@dimen/sp_14" />
+
+        <TextView
+            android:id="@+id/countView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:padding="@dimen/dp_5"
+            android:text="0/24"
+            android:textColor="@color/color_f9"
+            android:textSize="@dimen/sp_12" />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/submitView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_40"
+        android:layout_marginRight="@dimen/dp_10"
+        android:background="@drawable/buttom_login"
+        android:gravity="center"
+        android:padding="@dimen/dp_10"
+        android:text="提交"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_16" />
+
+
+    <TextView
+        android:id="@+id/msgView"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_40"
+        android:layout_marginRight="@dimen/dp_10"
+        android:padding="@dimen/dp_10"
+        android:text="注意：\n一个账号只能填写一个师傅,一旦拜师成功将不能解绑，也不能再填其他师傅ID"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/sp_14" />
+
+</LinearLayout>

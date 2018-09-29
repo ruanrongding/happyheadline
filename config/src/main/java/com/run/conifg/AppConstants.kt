@@ -12,7 +12,7 @@ public object AppConstants {
     /**
      * 网络请求地址
      */
-    const val BASE_URL = "http://ydzx.szhuanww.com/"
+    const val BASE_URL = "http://hltt.huanleap.com/"
     /**
      * des加密的key
      */
@@ -21,5 +21,13 @@ public object AppConstants {
      * 配置渠道号
      */
     const val CHANNEL_KEY = 1
+
+    /**
+     * 微信账号相关
+     */
+    val WC_APPID = "wx1a366fae4656d730"
+    val WC_AppSecret = "ea8f74f5cdb68ed8661e839c3a37faea"
+
+    val BASE_WC_URL = "https://api.weixin.qq.com/sns/"
 
 }

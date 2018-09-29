@@ -1,5 +1,4 @@
 package com.run.ui
-
 import android.app.Activity
 import android.content.Intent
 import android.os.Handler
@@ -13,9 +12,13 @@ import com.run.common.base.BaseActivity
 import com.run.common.utils.UActivityManager
 import com.run.common.utils.UStatusBar
 import com.run.common.view.NoScrollViewPager
+import com.run.presenter.LoginHelper
 import com.run.presenter.contract.MainContract
+import com.run.ui.fragment.FindFragment
 import com.run.ui.fragment.HomeFragment
-
+import com.run.ui.fragment.NewsFragment
+import com.run.ui.fragment.PersionFragment
+@Suppress("JAVA_CLASS_ON_COMPANION")
 class MainActivity : BaseActivity<MainContract.MainPresenter>(), MainContract.MainView {
     companion object {
         val TAG: String = MainActivity.javaClass.name
@@ -46,12 +49,11 @@ class MainActivity : BaseActivity<MainContract.MainPresenter>(), MainContract.Ma
         communityView.setOnClickListener { setStatus(1) }
         vedioView.setOnClickListener { setStatus(2) }
         persionView.setOnClickListener {
-            //            if (LoginHelper.instance.isLogin(this)) {
-            setStatus(3)
-//            }
+            if (LoginHelper.instance.isLogin(this)) {
+                setStatus(3)
+            }
         }
     }
-
     /**
      * 初始化底部导航栏状态
      */
@@ -87,17 +89,16 @@ class MainActivity : BaseActivity<MainContract.MainPresenter>(), MainContract.Ma
 
     override fun initData() {
         fragmentList = arrayListOf(HomeFragment.newInstance(),
-                HomeFragment.newInstance(),
-                HomeFragment.newInstance(),
-                HomeFragment.newInstance())
+                NewsFragment.newInstance(),
+                FindFragment.newInstance(),
+                PersionFragment.newInstance())
         viewpager.adapter = MainFragmentAdapter(supportFragmentManager)
         viewpager.offscreenPageLimit = 4
         setStatus(0)
-
-        mPresenter!!.statisticsActive(this@MainActivity
-        )
+        mPresenter!!.statisticsActive(this@MainActivity)
     }
-    //==============================================fragment集合====================================
+
+    //======================================fragment集合============================================
     inner class MainFragmentAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
         override fun getItem(position: Int): Fragment {
             return fragmentList[position]
@@ -110,7 +111,6 @@ class MainActivity : BaseActivity<MainContract.MainPresenter>(), MainContract.Ma
 
     //======================================= 退出应用 ==============================================
     private var mIsExit: Boolean = false
-
     override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             if (mIsExit) {

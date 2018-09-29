@@ -78,7 +78,7 @@
 
     <!--TabLayout的样式-->
     <style name="TabLayoutTextAppearance" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">@dimen/sp_16</item>
         <item name="android:textColor">@color/colorMain</item>
     </style>
 

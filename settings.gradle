@@ -1,1 +1,1 @@
-include ':app', ':config', ':common', ':ui', ':presenter', ':tablayout'
+include ':app', ':config', ':common', ':ui', ':presenter', ':tablayout','vedio','share'

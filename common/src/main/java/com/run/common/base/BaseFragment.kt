@@ -24,6 +24,15 @@ abstract class BaseFragment<T : BaseMvpPresenter> : Fragment(), BaseMvpView, Vie
         return view
     }
 
+
+    override fun onDestroy() {
+        super.onDestroy()
+        if (mPresenter != null) {
+            mPresenter!!.view = null
+            mPresenter = null
+        }
+    }
+
     //=========================数据初始化============================================================
     protected abstract fun initContentView(): Int
 
