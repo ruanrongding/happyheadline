@@ -23,6 +23,7 @@ class PersionFragment : BaseFragment<PersionContract.PersionPresenter>(), Persio
             return PersionFragment()
         }
     }
+
     override fun initContentView(): Int {
         return R.layout.fragment_persion
     }
@@ -67,7 +68,7 @@ class PersionFragment : BaseFragment<PersionContract.PersionPresenter>(), Persio
     override fun callBackData(modle: UserModle) {
         val data: UserModle.DataBean = modle.data!!
         UGlide.loadCircleImage(activity, data.head_avatar, headerView)
-        nickView.text = data.nick_name
+        nickView.text = data.nick_name + "(ID:" + data.user_id + ")"
         signerView.text = if (TextUtils.isEmpty(data.idiograph)) "这家伙很懒，什么都没写！" else data.idiograph
         apprenticeView.text = data.gold_balance.toString()
         moneyView.text = data.profit_balance

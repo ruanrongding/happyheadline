@@ -34,7 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:padding="@dimen/dp_8"
+                android:padding="@dimen/dp_10"
                 android:src="@mipmap/iv_set" />
 
 
@@ -51,7 +51,7 @@
                 android:id="@+id/headerView"
                 android:layout_width="@dimen/dp_65"
                 android:layout_height="@dimen/dp_65"
-                android:padding="@dimen/dp_5"
+                android:padding="@dimen/dp_2"
                 android:src="@mipmap/uh" />
 
             <LinearLayout
@@ -66,20 +66,21 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-                    <ImageView
-                        android:id="@+id/sexView"
-                        android:layout_width="@dimen/dp_15"
-                        android:layout_height="@dimen/dp_15"
-                        android:src="@mipmap/male" />
-
                     <TextView
                         android:id="@+id/nickView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/dp_5"
-                        android:text="Laughing哥"
+                        android:text=""
+                        android:textStyle="bold"
                         android:textColor="@color/white"
                         android:textSize="@dimen/sp_14" />
+
+                    <ImageView
+                        android:layout_marginLeft="@dimen/dp_5"
+                        android:id="@+id/sexView"
+                        android:layout_width="@dimen/dp_15"
+                        android:layout_height="@dimen/dp_15"
+                        android:src="@mipmap/male" />
 
                 </LinearLayout>
 
