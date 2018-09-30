@@ -10,7 +10,7 @@ class ArticleFragment : BaseListFragment<ArticleContract.ArticlePresenter, Artic
     companion object {
         fun newInstance(type: String): ArticleFragment {
             var fragment = ArticleFragment()
-            var bundle = Bundle()
+            val bundle = Bundle()
             bundle.putString("TYPE", type)
             fragment.arguments = bundle
             return fragment
@@ -49,10 +49,15 @@ class ArticleFragment : BaseListFragment<ArticleContract.ArticlePresenter, Artic
         mUserid = arguments!!.getInt("USERID")
         adapter = ArticleAdapter()
         initAdapter(adapter)
+        if ("collect_list" == mType) {
+            requestData()
+        }
     }
+
     override fun visiable() {
         requestData()
     }
+
     override fun requestData() {
         mPresenter!!.requestData(mType, mPage, mUserid, CATEGORY_ID)
     }

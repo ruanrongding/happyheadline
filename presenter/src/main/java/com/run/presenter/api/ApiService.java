@@ -2,12 +2,22 @@ package com.run.presenter.api;
 
 
 import com.run.config.modle.BaseModle;
+import com.run.presenter.contract.IncomeModle;
+import com.run.presenter.modle.ApprenticeModle;
 import com.run.presenter.modle.ArticleDetailModle;
 import com.run.presenter.modle.ArticleModle;
 import com.run.presenter.modle.ArticleTitleModle;
 import com.run.presenter.modle.CircleModle;
+import com.run.presenter.modle.DyContentModle;
+import com.run.presenter.modle.DynamicsModle;
+import com.run.presenter.modle.IncomeRecordModle;
+import com.run.presenter.modle.IncomeResultModle;
+import com.run.presenter.modle.MsgModle;
+import com.run.presenter.modle.MsgTypeModle;
 import com.run.presenter.modle.UserInfoModile;
 import com.run.presenter.modle.UserModle;
+import com.run.presenter.modle.WalletModle;
+import com.run.presenter.modle.WithDrawModle;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
@@ -44,6 +54,13 @@ public interface ApiService {
      */
     @GET("web/Article/essence")
     Observable<ArticleModle> articleessence(@Header("xytoken") String token, @Query("content") String content);
+
+    /*
+     * 获取收藏列表
+     */
+    @GET("web/User/collect_list")
+    Observable<ArticleModle> collect_list(@Header("xytoken") String token, @Query("content") String content);
+
 
 
     /**
@@ -120,6 +137,85 @@ public interface ApiService {
     @GET("web/user/user_info")
     Observable<UserInfoModile> user_info(@Header("xytoken") String token, @Query("content") String content);
 
+
+
+
+    /**
+     * 常见问题列表
+     */
+    @GET("web/info/dynamics")
+    Observable<DynamicsModle> dynamics(@Header("xytoken") String token, @Query("content") String content);
+
+    /**
+     * 常见问题内容
+     */
+    @GET("web/info/d_content")
+    Observable<DyContentModle> d_content(@Header("xytoken") String token, @Query("content") String content);
+
+
+
+    /**
+     * 消息类型
+     */
+    @GET("web/user/message_list")
+    Observable<MsgTypeModle> message_list(@Header("xytoken") String token, @Query("content") String content);
+
+
+    /**
+     * 消息类型
+     */
+    @GET("web/user/my_msg")
+    Observable<MsgModle> my_msg(@Header("xytoken") String token, @Query("content") String content);
+
+
+    /**
+     * 我的钱包
+     */
+    @GET("web/user/my_wallet")
+    Observable<WalletModle> my_wallet(@Header("xytoken") String token, @Query("content") String content);
+
+    /**
+     * 个人中心 – 收益明细
+     */
+    @GET("web/user/income_record?")
+    Observable<IncomeRecordModle> income_record(@Header("xytoken") String token, @Query("content") String content);
+
+
+    /**
+     * 体现记录
+     *
+     * @param content
+     * @return
+     */
+    @GET("web/user/bill")
+    Observable<WithDrawModle> bill(@Header("xytoken") String token, @Query("content") String content);
+
+
+    /**
+     * 收徒信息
+     */
+    @GET("web/user/invite_list")
+    Observable<ApprenticeModle> invite_list(@Header("xytoken") String token, @Query("content") String content);
+
+
+    /**
+     * 体现信息
+     *
+     * @param content
+     * @return
+     */
+    @GET("web/User/money_view")
+    Observable<IncomeModle> money_view(@Header("xytoken") String token, @Query("content") String content);
+
+
+    /**
+     * 体现接口
+     *
+     * @param content
+     * @return
+     */
+    @GET("web/User/money")
+    Observable<IncomeResultModle> money(@Header("xytoken") String token, @Query("content") String content);
 
 
 }

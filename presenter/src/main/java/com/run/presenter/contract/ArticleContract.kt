@@ -26,6 +26,7 @@ interface ArticleContract {
                 "ym_share" -> ApiManager.ym_share(mUserid, mPage)
                 "circle_hot" -> ApiManager.circle_article(mUserid, "hot", mPage)
                 "circle_news" -> ApiManager.circle_article(mUserid, "news", mPage)
+                "collect_list" -> ApiManager.collect_list(mPage)
                 else -> ApiManager.articlelist(CATEGORY_ID, mPage)
             }
             addDisposable(observable!!, object : BaseObserver<ArticleModle>() {

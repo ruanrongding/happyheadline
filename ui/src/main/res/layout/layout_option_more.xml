@@ -7,7 +7,7 @@
     android:paddingBottom="@dimen/dp_5">
 
     <RelativeLayout
-        android:id="@+id/ll_withdraw"
+        android:id="@+id/withdrawLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -131,7 +131,7 @@
     </RelativeLayout>
 
     <LinearLayout
-        android:id="@+id/ll_symx"
+        android:id="@+id/walletLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"

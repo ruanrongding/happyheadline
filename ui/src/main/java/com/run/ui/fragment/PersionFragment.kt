@@ -7,10 +7,11 @@ import android.widget.TextView
 import com.run.common.base.BaseFragment
 import com.run.common.utils.UGlide
 import com.run.common.utils.UStatusBar
+import com.run.conifg.AppIntentAction
 import com.run.presenter.contract.PersionContract
 import com.run.presenter.modle.UserModle
 import com.run.ui.R
-import com.run.ui.activity.SettingActivity
+import com.run.ui.activity.*
 
 /**
  * 个人中心
@@ -35,6 +36,7 @@ class PersionFragment : BaseFragment<PersionContract.PersionPresenter>(), Persio
     private lateinit var apprenticeView: TextView
     private lateinit var moneyView: TextView
     private lateinit var coinView: TextView
+    private lateinit var msgCountView: TextView
 
     override fun initView(view: View) {
         headerView = view.findViewById(R.id.headerView)
@@ -44,13 +46,32 @@ class PersionFragment : BaseFragment<PersionContract.PersionPresenter>(), Persio
         apprenticeView = view.findViewById(R.id.apprenticeView)
         moneyView = view.findViewById(R.id.moneyView)
         coinView = view.findViewById(R.id.coinView)
+        msgCountView = view.findViewById(R.id.msgCountView)
 
+        coinView.setOnClickListener(this)
+        moneyView.setOnClickListener(this)
+        apprenticeView.setOnClickListener(this)
         view.findViewById<View>(R.id.settingView).setOnClickListener(this)
+        view.findViewById<View>(R.id.qqView).setOnClickListener(this)
+        view.findViewById<View>(R.id.feedBackLayout).setOnClickListener(this)
+        view.findViewById<View>(R.id.problemLayout).setOnClickListener(this)
+        view.findViewById<View>(R.id.collectLayout).setOnClickListener(this)
+        view.findViewById<View>(R.id.msgLayout).setOnClickListener(this)
+        view.findViewById<View>(R.id.walletLayout).setOnClickListener(this)
+        view.findViewById<View>(R.id.withdrawLayout).setOnClickListener(this)
     }
 
     override fun onClick(v: View) {
         when (v.id) {
             R.id.settingView -> SettingActivity.newInstance(activity!!)
+            R.id.qqView -> AppIntentAction.joinQQGroup(mQQKey, activity!!)
+            R.id.feedBackLayout -> FeedBackActivity.newInstance(activity!!)
+            R.id.problemLayout -> ProblemActivity.newInstance(activity!!, 1)
+            R.id.collectLayout -> CollectListActivity.newInstance(activity!!)
+            R.id.msgLayout -> MessageActivity.newInstance(activity!!)
+            R.id.walletLayout, R.id.coinView, R.id.moneyView -> MyWalletActivity.newInstance(activity!!)
+            R.id.apprenticeView -> ApprenticeListActivity.newInstance(activity!!)
+            R.id.withdrawLayout -> WithDrawActivity.newInstance(activity!!)
         }
     }
 
@@ -59,7 +80,11 @@ class PersionFragment : BaseFragment<PersionContract.PersionPresenter>(), Persio
         return PersionContract.PersionPresenter(this)
     }
 
-    override fun initData() {}
+
+    override fun initData() {
+        mPresenter!!.getQQKey()
+    }
+
     override fun visiable() {
         UStatusBar.setDarkMode(this!!.activity!!)
         mPresenter!!.requestDate()
@@ -70,9 +95,25 @@ class PersionFragment : BaseFragment<PersionContract.PersionPresenter>(), Persio
         UGlide.loadCircleImage(activity, data.head_avatar, headerView)
         nickView.text = data.nick_name + "(ID:" + data.user_id + ")"
         signerView.text = if (TextUtils.isEmpty(data.idiograph)) "这家伙很懒，什么都没写！" else data.idiograph
-        apprenticeView.text = data.gold_balance.toString()
+        coinView.text = data.gold_balance.toString()
         moneyView.text = data.profit_balance
-        apprenticeView.text = if (TextUtils.isEmpty(data.profit_total)) "0" else data.profit_total
+        apprenticeView.text = modle.invite_mun.toString()
+        if (modle.my_msg_mun <= 0) {
+            msgCountView.visibility = View.GONE
+        } else {
+            msgCountView.visibility = View.VISIBLE
+            msgCountView.text = if (modle.my_msg_mun < 100) modle.my_msg_mun.toString() else "99+"
+        }
     }
+
+    /**
+     * 加入QQ群的key
+     */
+    private lateinit var mQQKey: String
+
+    override fun callBackQQKey(qqKey: String) {
+        mQQKey = qqKey
+    }
+
 
 }

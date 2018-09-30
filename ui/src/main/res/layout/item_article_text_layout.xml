@@ -4,15 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/bg_ripple_rless"
-    android:padding="@dimen/dp_5"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="@dimen/dp_5">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-       >
+        android:orientation="vertical">
 
 
         <TextView
@@ -25,53 +24,16 @@
             android:textColor="@color/color_f4"
             android:textSize="@dimen/sp_18" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="@dimen/dp_2">
-
-                <ImageView
-                    android:id="@+id/iv_user_portrait"
-                    android:layout_width="@dimen/dp_25"
-                    android:layout_height="@dimen/dp_25"
-                    android:adjustViewBounds="true" />
-
-
-                <TextView
-                    android:id="@+id/tv_user_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="nick"
-                    android:textColor="@color/colorNick"
-                    android:textSize="@dimen/sp_14" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
-
-                <include layout="@layout/view_article_option" />
-            </LinearLayout>
-        </LinearLayout>
+        <include layout="@layout/view_article_option" />
 
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_1"
+        android:background="@color/colorBackGround"
         android:paddingTop="@dimen/dp_2"
-        android:paddingBottom="@dimen/dp_2"
-        android:background="@color/colorBackGround" />
+        android:paddingBottom="@dimen/dp_2" />
 
 </LinearLayout>

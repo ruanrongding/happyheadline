@@ -7,7 +7,9 @@ import com.run.common.utils.URetrofit
 import com.run.config.AppConstants
 import com.run.config.modle.BaseModle
 import com.run.presenter.LoginHelper
+import com.run.presenter.api.ApiManager
 import com.run.presenter.modle.login.LoginModle
+import com.run.presenter.modle.login.QQModle
 import io.reactivex.Observable
 import org.json.JSONException
 import org.json.JSONObject
@@ -169,6 +171,38 @@ object LoginManager {
         jsonObject.put("channel", AppConstants.CHANNEL_KEY)
         return instance.user_save(LoginHelper.instance.getmToken()!!, UEncrypt.encrypt_AES(jsonObject.toString(), AppConstants.DES_KEY))
 
+    }
+
+
+    /**
+     * 获取qq的key
+     *
+     * @return
+     */
+    fun getQQKey(): Observable<QQModle> {
+        val jsonObject = JSONObject()
+        jsonObject.put("channel", AppConstants.CHANNEL_KEY)
+        return instance.getQQKey(LoginHelper.instance.getmToken()!!, UEncrypt.encrypt_AES(jsonObject.toString(), AppConstants.DES_KEY))
+    }
+
+
+    /**
+     * 意见反馈
+     *
+     * @param title
+     * @param content
+     * @param phone
+     * @return
+     */
+    fun feedback(title: String, content: String, phone: String): Observable<BaseModle> {
+        val jsonObject = JSONObject()
+        jsonObject.put("title", title)
+        jsonObject.put("content", content)
+        jsonObject.put("phone", phone)
+        jsonObject.put("channel", AppConstants.CHANNEL_KEY)
+
+
+        return instance.feedback(LoginHelper.instance.getmToken()!!, UEncrypt.encrypt_AES(jsonObject.toString(), AppConstants.DES_KEY))
     }
 
 

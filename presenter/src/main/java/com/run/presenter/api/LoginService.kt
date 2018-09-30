@@ -2,6 +2,7 @@ package com.run.login.api
 
 import com.run.config.modle.BaseModle
 import com.run.presenter.modle.login.LoginModle
+import com.run.presenter.modle.login.QQModle
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Header
@@ -88,6 +89,27 @@ interface LoginService {
      */
     @GET("/web/User/bound_teacher")
     abstract fun bound_teacher(@Header("xytoken") token: String, @Query("content") content: String): Observable<BaseModle>
+
+
+    /**
+     * 获取QQEKY值
+     *
+     * @param token
+     * @param content
+     * @return
+     */
+    @GET(" web/config/getqq")
+    fun getQQKey(@Header("xytoken") token: String, @Query("content") content: String): Observable<QQModle>
+
+
+    /**
+     * 意见反馈
+     *
+     * @param content
+     * @return
+     */
+    @GET("/web/User/feedback")
+    fun feedback(@Header("xytoken") token: String, @Query("content") content: String): Observable<BaseModle>
 
 
 }

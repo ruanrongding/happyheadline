@@ -45,6 +45,7 @@ class ArticleAdapter : BaseMultiItemQuickAdapter<ArticleBean, BaseViewHolder>(nu
                     PhotoViewActivity.newInstance(mContext as MainActivity, item.litpic!!, helper.getView(R.id.iv_litpic), item.title!!, item.details_id)
                 }
             }
+
             ArticleBean.ARTICLE_GIFT, ArticleBean.ARTICLE_GIF_PLUS -> {
                 val tv_title: TextView = helper.getView(R.id.tv_title)
                 tv_title.text = SpanStringUtils.getEmotionContent(EmotionUtils.EMOTION_CLASSIC_TYPE, mContext, tv_title, item.title)
@@ -68,8 +69,8 @@ class ArticleAdapter : BaseMultiItemQuickAdapter<ArticleBean, BaseViewHolder>(nu
                 helper.getView<View>(R.id.view_content).setOnClickListener {
                     WebPhotoActivity.newInstance(mContext, item.details_id, item.title!!)
                 }
-
             }
+
             ArticleBean.ARTICLE_VEDIO -> {
                 val tv_title: TextView = helper.getView(R.id.tv_title)
                 tv_title.text = SpanStringUtils.getEmotionContent(EmotionUtils.EMOTION_CLASSIC_TYPE, mContext, tv_title, item.title)

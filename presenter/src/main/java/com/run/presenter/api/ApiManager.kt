@@ -7,6 +7,7 @@ import com.run.common.utils.URetrofit
 import com.run.config.AppConstants
 import com.run.config.modle.BaseModle
 import com.run.presenter.LoginHelper
+import com.run.presenter.contract.IncomeModle
 import com.run.presenter.modle.*
 import io.reactivex.Observable
 import org.json.JSONException
@@ -125,6 +126,17 @@ object ApiManager {
     }
 
     /**
+     * 收藏列表
+     */
+    fun collect_list(page: Int): Observable<ArticleModle> {
+        val jsonObject = JSONObject()
+        jsonObject.put("page", page)
+        jsonObject.put("channel", AppConstants.CHANNEL_KEY)
+        return instance.collect_list(LoginHelper.instance.getmToken(), UEncrypt.encrypt_AES(jsonObject.toString(), AppConstants.DES_KEY))
+    }
+
+
+    /**
      * 所属圈子文章
      */
     fun circle_article(circle_id: Int, circle_type: String, page: Int): Observable<ArticleModle> {
@@ -196,6 +208,128 @@ object ApiManager {
         val jsonObject = JSONObject()
         jsonObject.put("channel", AppConstants.CHANNEL_KEY)
         return instance.user_info(LoginHelper.instance.getmToken(), UEncrypt.encrypt_AES(jsonObject.toString(), AppConstants.DES_KEY))
+    }
+
+
+    /**
+     * 新手指导列表
+     */
+    fun dynamics(type: Int): Observable<DynamicsModle> {
+        val jsonObject = JSONObject()
+        jsonObject.put("type", type)
+        jsonObject.put("channel", AppConstants.CHANNEL_KEY)
+        return instance.dynamics(LoginHelper.instance.getmToken(), UEncrypt.encrypt_AES(jsonObject.toString(), AppConstants.DES_KEY))
+    }
+
+
+    /**
+     * 新手指导内容
+     */
+    fun problemContent(z_id: Int): Observable<DyContentModle> {
+        val jsonObject = JSONObject()
+        jsonObject.put("z_id", z_id)
+        jsonObject.put("channel", AppConstants.CHANNEL_KEY)
+        return instance.d_content(LoginHelper.instance.getmToken(), UEncrypt.encrypt_AES(jsonObject.toString(), AppConstants.DES_KEY))
+    }
+
+
+    /**
+     * 消息类型
+     */
+    fun message_list(): Observable<MsgTypeModle> {
+        val jsonObject = JSONObject()
+        jsonObject.put("channel", AppConstants.CHANNEL_KEY)
+        return instance.message_list(LoginHelper.instance.getmToken(), UEncrypt.encrypt_AES(jsonObject.toString(), AppConstants.DES_KEY))
+    }
+
+    /**
+     * 消息内容
+     */
+    fun my_msg(msg_id: Int): Observable<MsgModle> {
+        val jsonObject = JSONObject()
+        jsonObject.put("msg_id", msg_id)
+        jsonObject.put("channel", AppConstants.CHANNEL_KEY)
+        return instance.my_msg(LoginHelper.instance.getmToken(), UEncrypt.encrypt_AES(jsonObject.toString(), AppConstants.DES_KEY))
+    }
+
+
+    /**
+     * 我的钱包
+     */
+    fun my_wallet(): Observable<WalletModle> {
+        val jsonObject = JSONObject()
+        jsonObject.put("channel", AppConstants.CHANNEL_KEY)
+        return instance.my_wallet(LoginHelper.instance.getmToken(), UEncrypt.encrypt_AES(jsonObject.toString(), AppConstants.DES_KEY))
+    }
+
+    /**
+     * 收益明细
+     */
+    fun income_record(type: String, page: Int): Observable<IncomeRecordModle> {
+        val jsonObject = JSONObject()
+        jsonObject.put("type", type)
+        jsonObject.put("page", page)
+        jsonObject.put("channel", AppConstants.CHANNEL_KEY)
+
+        return ApiManager.instance.income_record(LoginHelper.instance.getmToken(), UEncrypt.encrypt_AES(jsonObject.toString(), AppConstants.DES_KEY))
+
+    }
+
+
+    /**
+     *提现记录
+     *
+     * @param type 体现类型
+     * @param page
+     * @return
+     */
+    fun bill(type: String, page: Int): Observable<WithDrawModle> {
+        val jsonObject = JSONObject()
+        jsonObject.put("type", type)
+        jsonObject.put("page", page)
+        jsonObject.put("channel", AppConstants.CHANNEL_KEY)
+        return ApiManager.instance.bill(LoginHelper.instance.getmToken(), UEncrypt.encrypt_AES(jsonObject.toString(), AppConstants.DES_KEY))
+
+    }
+
+    /**
+     * 我的收徒列表
+     */
+    fun invite_list(page: Int): Observable<ApprenticeModle> {
+        val jsonObject = JSONObject()
+        jsonObject.put("page", page)
+        jsonObject.put("channel", AppConstants.CHANNEL_KEY)
+        return ApiManager.instance.invite_list(LoginHelper.instance.getmToken(), UEncrypt.encrypt_AES(jsonObject.toString(), AppConstants.DES_KEY))
+    }
+
+
+    /**
+     * 获取体现方式
+     *
+     * @return
+     */
+    fun money_view(): Observable<IncomeModle> {
+        val jsonObject = JSONObject()
+            jsonObject.put("channel", AppConstants.CHANNEL_KEY)
+
+
+        return instance.money_view(LoginHelper.instance.getmToken(), UEncrypt.encrypt_AES(jsonObject.toString(), AppConstants.DES_KEY))
+    }
+
+
+    /**
+     * 体现
+     *
+     * @return
+     */
+    fun money(money: Int, type: Int, my_voucherid: Int): Observable<IncomeResultModle> {
+        val jsonObject = JSONObject()
+            jsonObject.put("money", money)
+            jsonObject.put("type", type)
+            jsonObject.put("my_voucherid", my_voucherid)
+            jsonObject.put("channel", AppConstants.CHANNEL_KEY)
+        return instance.money(LoginHelper.instance.getmToken(), UEncrypt.encrypt_AES(jsonObject.toString(), AppConstants.DES_KEY))
+
     }
 
 

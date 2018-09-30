@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:id="@+id/tv_withdraw_type"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:text="微信提现"
+            android:textColor="@color/color_f3"
+            android:textSize="@dimen/sp_12" />
+
+        <View
+            android:layout_width="@dimen/dp_0_5"
+            android:layout_height="match_parent"
+            android:background="@color/colorLineColor" />
+
+        <TextView
+            android:id="@+id/tv_money"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:text="10"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/sp_20"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="@dimen/dp_0_5"
+            android:layout_height="match_parent"
+            android:background="@color/colorLineColor" />
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:text="2018-03-08 11:35:05"
+            android:textColor="@color/color_f6"
+            android:textSize="@dimen/sp_10" />
+
+        <View
+            android:layout_width="@dimen/dp_0_5"
+            android:layout_height="match_parent"
+            android:background="@color/colorLineColor" />
+
+        <TextView
+            android:id="@+id/tv_withdraw_status"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:text="提现成功"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/sp_12" />
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/colorLineColor" />
+
+    <LinearLayout
+        android:id="@+id/ll_fail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_fail_reason"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/dp_10"
+            android:text="失败原因"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/sp_12"
+            android:textStyle="bold" />
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_0_5"
+            android:background="@color/colorLineColor" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

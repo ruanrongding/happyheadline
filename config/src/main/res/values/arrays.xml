@@ -12,5 +12,9 @@
         <item>关注</item>
     </string-array>
 
+    <string-array name="tab_wallet_title">
+        <item>乐币</item>
+        <item>零钱</item>
+    </string-array>
 
 </resources>
