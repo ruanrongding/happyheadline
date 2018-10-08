@@ -23,7 +23,6 @@ object Config {
     }
 
 
-
     fun checkIfNoneShowIntall(context: Context, sort: String) {
         if (INFOS != null && INFOS.size > 0) {
             INFOS.clear()
@@ -59,6 +58,7 @@ object Config {
             INFOS["com.tencent.mtt"] = "wx64f9cf5b17af074d"
             INFOS["com.tencent.mobileqq"] = "wxf0a80d0ac2e82aa7"
         } else if (sort == "4") {
+            INFOS!!["com.yun.happyheadline"] = "wx1a366fae4656d730"
             INFOS!!["com.UCMobile"] = "wx020a535dccd46c11"
             INFOS["com.tencent.mtt"] = "wx64f9cf5b17af074d"
             INFOS["com.tencent.mobileqq"] = "wxf0a80d0ac2e82aa7"
@@ -81,7 +81,6 @@ object Config {
                     showInstallDialog(context)
                 }
             }
-
             i++
         }
     }

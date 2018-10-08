@@ -85,7 +85,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/white"
+        android:background="@color/colorBackGround"
         android:ellipsize="marquee"
         android:focusable="true"
         android:focusableInTouchMode="true"
@@ -96,7 +96,6 @@
         android:text=""
         android:textColor="@color/colorNick"
         android:textSize="@dimen/sp_14" />
-
 
     <com.run.tablayout.TabLayout
         android:id="@+id/tabLayout"

@@ -11,6 +11,7 @@ import com.run.common.emoj.SpanStringUtils
 import com.run.common.utils.UGlide
 import com.run.common.utils.UWebView
 import com.run.presenter.modle.ArticleBean
+import com.run.share.ShareHelper
 import com.run.ui.*
 import com.run.ui.activity.PhotoViewActivity
 import com.run.ui.activity.VedioDetailActivity
@@ -26,6 +27,7 @@ class ArticleAdapter : BaseMultiItemQuickAdapter<ArticleBean, BaseViewHolder>(nu
         addItemType(ArticleBean.ARTICLE_IMAGE_PLUS, R.layout.item_article_imageplus_layout)
         addItemType(ArticleBean.ARTICLE_VEDIO, R.layout.item_article_vedio_layout)
     }
+
 
     //网络请求的URL-->:
     override fun convert(helper: BaseViewHolder?, item: ArticleBean?) {
@@ -45,7 +47,6 @@ class ArticleAdapter : BaseMultiItemQuickAdapter<ArticleBean, BaseViewHolder>(nu
                     PhotoViewActivity.newInstance(mContext as MainActivity, item.litpic!!, helper.getView(R.id.iv_litpic), item.title!!, item.details_id)
                 }
             }
-
             ArticleBean.ARTICLE_GIFT, ArticleBean.ARTICLE_GIF_PLUS -> {
                 val tv_title: TextView = helper.getView(R.id.tv_title)
                 tv_title.text = SpanStringUtils.getEmotionContent(EmotionUtils.EMOTION_CLASSIC_TYPE, mContext, tv_title, item.title)
@@ -70,16 +71,18 @@ class ArticleAdapter : BaseMultiItemQuickAdapter<ArticleBean, BaseViewHolder>(nu
                     WebPhotoActivity.newInstance(mContext, item.details_id, item.title!!)
                 }
             }
-
             ArticleBean.ARTICLE_VEDIO -> {
                 val tv_title: TextView = helper.getView(R.id.tv_title)
                 tv_title.text = SpanStringUtils.getEmotionContent(EmotionUtils.EMOTION_CLASSIC_TYPE, mContext, tv_title, item.title)
                 UGlide.loadRoundImage(mContext, item.litpic!!, helper.getView(R.id.iv_litpic), 5)
                 helper.getView<View>(R.id.ll_root).setOnClickListener {
-                        VedioDetailActivity.newInstance(mContext, item.details_id, item.litpic!!)
+                    VedioDetailActivity.newInstance(mContext, item.details_id, item.litpic!!)
 
                 }
             }
+        }
+        helper.getView<View>(R.id.ll_operation_share).setOnClickListener {
+            ShareHelper.instance.doShare(mContext, item.details_id)
         }
     }
 }

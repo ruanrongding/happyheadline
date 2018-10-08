@@ -37,6 +37,7 @@ class PersionFragment : BaseFragment<PersionContract.PersionPresenter>(), Persio
     private lateinit var moneyView: TextView
     private lateinit var coinView: TextView
     private lateinit var msgCountView: TextView
+    private lateinit var inviteLayout: TextView
 
     override fun initView(view: View) {
         headerView = view.findViewById(R.id.headerView)
@@ -48,9 +49,9 @@ class PersionFragment : BaseFragment<PersionContract.PersionPresenter>(), Persio
         coinView = view.findViewById(R.id.coinView)
         msgCountView = view.findViewById(R.id.msgCountView)
 
-        coinView.setOnClickListener(this)
-        moneyView.setOnClickListener(this)
-        apprenticeView.setOnClickListener(this)
+        view.findViewById<View>(R.id.coinLayout).setOnClickListener(this)
+        view.findViewById<View>(R.id.moneyLayout).setOnClickListener(this)
+        view.findViewById<View>(R.id.apprenticeLayout).setOnClickListener(this)
         view.findViewById<View>(R.id.settingView).setOnClickListener(this)
         view.findViewById<View>(R.id.qqView).setOnClickListener(this)
         view.findViewById<View>(R.id.feedBackLayout).setOnClickListener(this)
@@ -59,7 +60,9 @@ class PersionFragment : BaseFragment<PersionContract.PersionPresenter>(), Persio
         view.findViewById<View>(R.id.msgLayout).setOnClickListener(this)
         view.findViewById<View>(R.id.walletLayout).setOnClickListener(this)
         view.findViewById<View>(R.id.withdrawLayout).setOnClickListener(this)
+        view.findViewById<View>(R.id.inviteLayout).setOnClickListener(this)
     }
+
 
     override fun onClick(v: View) {
         when (v.id) {
@@ -69,17 +72,16 @@ class PersionFragment : BaseFragment<PersionContract.PersionPresenter>(), Persio
             R.id.problemLayout -> ProblemActivity.newInstance(activity!!, 1)
             R.id.collectLayout -> CollectListActivity.newInstance(activity!!)
             R.id.msgLayout -> MessageActivity.newInstance(activity!!)
-            R.id.walletLayout, R.id.coinView, R.id.moneyView -> MyWalletActivity.newInstance(activity!!)
-            R.id.apprenticeView -> ApprenticeListActivity.newInstance(activity!!)
+            R.id.walletLayout, R.id.coinLayout, R.id.moneyLayout -> MyWalletActivity.newInstance(activity!!)
+            R.id.apprenticeLayout -> ApprenticeListActivity.newInstance(activity!!)
             R.id.withdrawLayout -> WithDrawActivity.newInstance(activity!!)
+            R.id.inviteLayout -> InviteActivity.newInstance(activity!!)
         }
     }
-
 
     override fun initPresenter(): PersionContract.PersionPresenter? {
         return PersionContract.PersionPresenter(this)
     }
-
 
     override fun initData() {
         mPresenter!!.getQQKey()
@@ -110,6 +112,7 @@ class PersionFragment : BaseFragment<PersionContract.PersionPresenter>(), Persio
      * 加入QQ群的key
      */
     private lateinit var mQQKey: String
+
 
     override fun callBackQQKey(qqKey: String) {
         mQQKey = qqKey

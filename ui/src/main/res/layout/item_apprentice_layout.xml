@@ -14,7 +14,7 @@
         <View
             android:layout_width="@dimen/dp_0_5"
             android:layout_height="match_parent"
-            android:background="@color/colorLineColor" />
+            android:background="@color/colorLine" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -43,7 +43,7 @@
         <View
             android:layout_width="@dimen/dp_0_5"
             android:layout_height="match_parent"
-            android:background="@color/colorLineColor" />
+            android:background="@color/colorLine" />
 
         <TextView
             android:id="@+id/tv_mobile"
@@ -59,7 +59,7 @@
         <View
             android:layout_width="@dimen/dp_0_5"
             android:layout_height="match_parent"
-            android:background="@color/colorLineColor" />
+            android:background="@color/colorLine" />
 
         <TextView
             android:id="@+id/tv_bonus_grant"
@@ -75,7 +75,7 @@
         <View
             android:layout_width="@dimen/dp_0_5"
             android:layout_height="match_parent"
-            android:background="@color/colorLineColor" />
+            android:background="@color/colorLine" />
 
         <TextView
             android:id="@+id/tv_bonus_amount"
@@ -93,7 +93,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_0_5"
-        android:background="@color/colorLineColor" />
+        android:background="@color/colorLine" />
 
 
 </LinearLayout>

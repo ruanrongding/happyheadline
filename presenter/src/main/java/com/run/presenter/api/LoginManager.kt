@@ -5,11 +5,14 @@ import com.run.common.BaseApplication
 import com.run.common.utils.UEncrypt
 import com.run.common.utils.URetrofit
 import com.run.config.AppConstants
+import com.run.config.AppConstants.DES_KEY
 import com.run.config.modle.BaseModle
 import com.run.presenter.LoginHelper
 import com.run.presenter.api.ApiManager
 import com.run.presenter.modle.login.LoginModle
 import com.run.presenter.modle.login.QQModle
+import com.run.presenter.modle.share.ShareModle
+import com.run.presenter.modle.share.ShareMsgModle
 import io.reactivex.Observable
 import org.json.JSONException
 import org.json.JSONObject
@@ -158,7 +161,6 @@ object LoginManager {
         return instance.bound_teacher(LoginHelper.instance.getmToken()!!, UEncrypt.encrypt_AES(jsonObject.toString(), AppConstants.DES_KEY))
     }
 
-
     /**
      * 修改昵称
      */
@@ -170,9 +172,7 @@ object LoginManager {
         jsonObject.put("real_name", real_name)
         jsonObject.put("channel", AppConstants.CHANNEL_KEY)
         return instance.user_save(LoginHelper.instance.getmToken()!!, UEncrypt.encrypt_AES(jsonObject.toString(), AppConstants.DES_KEY))
-
     }
-
 
     /**
      * 获取qq的key
@@ -184,7 +184,6 @@ object LoginManager {
         jsonObject.put("channel", AppConstants.CHANNEL_KEY)
         return instance.getQQKey(LoginHelper.instance.getmToken()!!, UEncrypt.encrypt_AES(jsonObject.toString(), AppConstants.DES_KEY))
     }
-
 
     /**
      * 意见反馈
@@ -206,4 +205,47 @@ object LoginManager {
     }
 
 
+    //==================================================分享===========================================================================
+    /**
+     * 获取分享内容
+     */
+    fun share_record(article_id: Int, share_type: Int): Observable<ShareModle> {
+        val jsonObject = JSONObject()
+        jsonObject.put("details_id", article_id)
+        jsonObject.put("share_type", share_type)
+        jsonObject.put("channel", AppConstants.CHANNEL_KEY)
+        return instance.share_record(LoginHelper.instance.getmToken()!!, UEncrypt.encrypt_AES(jsonObject.toString(), AppConstants.DES_KEY))
+    }
+
+    fun share_msg(): Observable<ShareMsgModle> {
+        return instance.share_msg(LoginHelper.instance.getmToken()!!, "")
+    }
+
+
+    /**
+     * 举报
+     */
+    fun add_complaints(details_id: Int, content: String): Observable<BaseModle> {
+        val jsonObject = JSONObject()
+        jsonObject.put("details_id", details_id)
+        jsonObject.put("content", content)
+        jsonObject.put("channel", AppConstants.CHANNEL_KEY)
+        return instance.add_complaints(LoginHelper.instance.getmToken()!!, UEncrypt.encrypt_AES(jsonObject.toString(), DES_KEY))
+    }
+
+
+    /**
+     * 收藏
+     */
+    fun details_collect(details_id: Int): Observable<BaseModle> {
+        val jsonObject = JSONObject()
+        try {
+            jsonObject.put("details_id", details_id)
+            jsonObject.put("channel", AppConstants.CHANNEL_KEY)
+        } catch (e: JSONException) {
+            e.printStackTrace()
+        }
+
+        return instance.details_collect(LoginHelper.instance.getmToken()!!, UEncrypt.encrypt_AES(jsonObject.toString(), AppConstants.DES_KEY))
+    }
 }

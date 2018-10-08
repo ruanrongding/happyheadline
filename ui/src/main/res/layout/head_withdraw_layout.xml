@@ -45,11 +45,11 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/dp_10"
         android:gravity="center"
         android:orientation="horizontal">
 
         <RelativeLayout
+            android:id="@+id/withDrawTypeView"
             android:layout_width="0dp"
             android:layout_height="@dimen/dp_50"
             android:layout_margin="@dimen/dp_10"
@@ -63,7 +63,7 @@
                 android:drawableLeft="@mipmap/a5s"
                 android:drawablePadding="@dimen/dp_5"
                 android:text="微信"
-                android:textColor="@color/color_f3"
+                android:textColor="@color/color_withdraw"
                 android:textSize="@dimen/sp_16" />
 
             <ImageView
@@ -72,12 +72,12 @@
                 android:layout_alignParentRight="true"
                 android:src="@mipmap/xz" />
 
-
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_10"
             android:layout_weight="1"></RelativeLayout>
 
     </LinearLayout>

@@ -6,74 +6,22 @@
     android:orientation="vertical">
 
 
-    <TextView
-        android:id="@+id/tv_title_dialog"
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#F8F8F8"
+        android:adjustViewBounds="true"
         android:gravity="center"
-        android:padding="10dp"
-        android:text="分享"
-        android:textColor="@color/color_f3"
-        android:textSize="12sp"
-        android:visibility="gone" />
+        android:scaleType="fitXY"
+        android:src="@mipmap/st_3" />
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#F8F8F8"
-        android:gravity="center"
+        android:background="@color/colorBackGround"
         android:orientation="horizontal"
-        android:padding="10dp">
-
-        <View
-            android:layout_marginRight="5dp"
-            android:layout_width="30dp"
-            android:layout_height="1dp"
-            android:background="@color/color_f6"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="分享微信群/圈被阅读"
-            android:textColor="@color/color_f6"
-            android:textSize="14sp" />
-
-
-
-        <TextView
-            android:id="@+id/tv_msg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="6dp"
-            android:text="+0.2元/位"
-            android:textColor="@color/colorSwipe"
-            android:textSize="14sp" />
-
-        <View
-            android:layout_marginLeft="5dp"
-            android:layout_width="30dp"
-            android:layout_height="1dp"
-            android:background="@color/color_f6"
-            />
-
-
-    </LinearLayout>
-
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_0_5"
-        android:background="@color/colorLine" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#F8F8F8"
-        android:orientation="horizontal"
-        android:paddingBottom="5dp"
-        android:paddingTop="10dp">
+        android:paddingTop="@dimen/dp_15"
+        android:paddingBottom="@dimen/dp_5">
 
         <LinearLayout
             android:id="@+id/ll_share_wc"
@@ -85,13 +33,14 @@
 
 
             <RelativeLayout
-                android:layout_width="60dp"
-                android:layout_height="60dp">
+                android:layout_width="@dimen/dp_60"
+                android:layout_height="@dimen/dp_60">
 
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:adjustViewBounds="true"
+                    android:padding="@dimen/dp_5"
                     android:scaleType="centerCrop"
                     android:src="@drawable/share_wechat_selector" />
 
@@ -99,18 +48,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="5dp"
                     android:src="@mipmap/tj" />
             </RelativeLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="@dimen/dp_5"
                 android:text="微信群分享"
                 android:textColor="@color/color_f6"
-                android:textSize="12sp" />
+                android:textSize="@dimen/sp_12" />
 
 
         </LinearLayout>
@@ -124,8 +71,8 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="@dimen/dp_60"
+                android:layout_height="@dimen/dp_60"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
                 android:src="@drawable/share_circlefriend_selector" />
@@ -133,49 +80,133 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="@dimen/dp_5"
                 android:text="朋友圈分享"
                 android:textColor="@color/color_f6"
-                android:textSize="12sp" />
+                android:textSize="@dimen/sp_12" />
 
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/ll_share_code"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/dp_60"
+                android:layout_height="@dimen/dp_60"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/share_copy_selector" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_5"
+                android:text="复制链接"
+                android:textColor="@color/color_f6"
+                android:textSize="@dimen/sp_12" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
 
     <LinearLayout
-        android:id="@+id/tv_shouming"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#F8F8F8"
-        android:gravity="center_vertical"
+        android:background="@color/colorBackGround"
         android:orientation="horizontal"
-        android:padding="10dp">
+        android:paddingTop="@dimen/dp_5"
+        android:paddingBottom="@dimen/dp_10">
 
-        <TextView
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:id="@+id/ll_share_save"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:gravity="center"
-            android:text="计费规则说明？"
-            android:textColor="#00BB77"
-            android:textSize="16sp" />
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/dp_60"
+                android:layout_height="@dimen/dp_60"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/share_save_selector" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_5"
+                android:text="收藏"
+                android:textColor="@color/color_f6"
+                android:textSize="@dimen/sp_12" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_share_report"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/dp_60"
+                android:layout_height="@dimen/dp_60"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/share_report_selector" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_5"
+                android:text="举报"
+                android:textColor="@color/color_f6"
+                android:textSize="@dimen/sp_12" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="invisible">
+
+            <ImageView
+                android:layout_width="@dimen/dp_60"
+                android:layout_height="@dimen/dp_60"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/share_report_selector" />
+
+            <TextView
+                android:layout_marginTop="@dimen/dp_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="举报"
+                android:textColor="@color/color_f6"
+                android:textSize="@dimen/sp_12" />
+
+        </LinearLayout>
 
     </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_0_5"
-        android:background="@color/colorLine" />
-
 
     <TextView
         android:id="@+id/tv_cancle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_ripple"
+        android:background="?android:attr/selectableItemBackground"
         android:gravity="center"
-        android:padding="15dp"
+        android:padding="@dimen/dp_15"
         android:text="取消"
         android:textColor="@color/color_f6"
         android:textSize="@dimen/sp_14" />

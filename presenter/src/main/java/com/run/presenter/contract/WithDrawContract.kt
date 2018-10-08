@@ -23,10 +23,10 @@ interface WithDrawContract {
         fun showMoneyError(msg: String)
     }
 
+
     class WithDrawPresenter(private val v: WithDrawView) : BaseMvpPresenter(v) {
         fun money_view() {
             if (isViewAttached()) v.showLoading()
-
             addDisposable(ApiManager.money_view(), object : BaseObserver<IncomeModle>() {
                 override fun onError(errorType: Int, msg: String?) {
                     if (isViewAttached()) {
@@ -34,18 +34,14 @@ interface WithDrawContract {
                         v.showErr(errorType, msg!!)
                     }
                 }
-
                 override fun onSuccess(o: IncomeModle) {
                     if (isViewAttached()) {
                         v.showData(o)
                         v.hideLoading()
                     }
-
                 }
             })
-
         }
-
         fun money(money: Int, type: Int, my_voucherid: Int) {
             if (isViewAttached()) v.showLoading()
             ApiManager.money(money, type, my_voucherid).subscribeOn(Schedulers.io())
@@ -66,11 +62,10 @@ interface WithDrawContract {
                                 v.moneyFinish(bean!!.msg!!)
                             }
                         }
-
                         override fun onError(e: Throwable) {
+                            if (isViewAttached()) v.hideLoading()
                             v.showMsg("提现失败")
                         }
-
                         override fun onComplete() {
                         }
                     })

@@ -62,6 +62,7 @@ object UGlide {
         if (context == null) return
         Glide.with(context).asGif().load(url).into(imageView)
     }
+
     /**
      * 加载圆角图片
      *
@@ -102,7 +103,7 @@ object UGlide {
                 val para = imageView.layoutParams
                 para.height = height
                 para.width = USize.getWidth(context)
-                imageView.setImageBitmap(UBitmap.getRoundedCornerBitmap(resource, 5f))
+                imageView.setImageBitmap(resource)
             }
         })
     }

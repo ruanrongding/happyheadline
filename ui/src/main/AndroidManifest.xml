@@ -36,7 +36,11 @@
             android:theme="@style/AppTheme" />
         <activity android:name=".activity.WithDrawBillActivity" />
         <activity android:name=".activity.ApprenticeListActivity" />
-        <activity android:name=".activity.WithDrawActivity"></activity>
+        <activity android:name=".activity.WithDrawActivity" />
+        <activity android:name=".activity.BindWCActivity" />
+        <activity android:name=".activity.WithDrawResultActivity" />
+        <activity android:name=".activity.InviteActivity" />
+        <activity android:name=".activity.FaceInviteActivity"></activity>
     </application>
 
 </manifest>

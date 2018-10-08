@@ -108,6 +108,7 @@
             android:padding="@dimen/dp_5">
 
             <LinearLayout
+                android:id="@+id/coinLayout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -137,6 +138,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/moneyLayout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -166,6 +168,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/apprenticeLayout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

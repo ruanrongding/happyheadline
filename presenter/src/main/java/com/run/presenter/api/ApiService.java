@@ -12,6 +12,7 @@ import com.run.presenter.modle.DyContentModle;
 import com.run.presenter.modle.DynamicsModle;
 import com.run.presenter.modle.IncomeRecordModle;
 import com.run.presenter.modle.IncomeResultModle;
+import com.run.presenter.modle.InviteModle;
 import com.run.presenter.modle.MsgModle;
 import com.run.presenter.modle.MsgTypeModle;
 import com.run.presenter.modle.UserInfoModile;
@@ -216,6 +217,15 @@ public interface ApiService {
      */
     @GET("web/User/money")
     Observable<IncomeResultModle> money(@Header("xytoken") String token, @Query("content") String content);
+
+
+
+
+    /**
+     * 邀请收徒
+     */
+    @GET("web/user/invite")
+    Observable<InviteModle> invite(@Header("xytoken") String token, @Query("content") String content);
 
 
 }

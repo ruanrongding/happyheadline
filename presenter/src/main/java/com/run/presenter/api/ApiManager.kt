@@ -310,7 +310,7 @@ object ApiManager {
      */
     fun money_view(): Observable<IncomeModle> {
         val jsonObject = JSONObject()
-            jsonObject.put("channel", AppConstants.CHANNEL_KEY)
+        jsonObject.put("channel", AppConstants.CHANNEL_KEY)
 
 
         return instance.money_view(LoginHelper.instance.getmToken(), UEncrypt.encrypt_AES(jsonObject.toString(), AppConstants.DES_KEY))
@@ -324,13 +324,22 @@ object ApiManager {
      */
     fun money(money: Int, type: Int, my_voucherid: Int): Observable<IncomeResultModle> {
         val jsonObject = JSONObject()
-            jsonObject.put("money", money)
-            jsonObject.put("type", type)
-            jsonObject.put("my_voucherid", my_voucherid)
-            jsonObject.put("channel", AppConstants.CHANNEL_KEY)
+        jsonObject.put("money", money)
+        jsonObject.put("type", type)
+        jsonObject.put("my_voucherid", my_voucherid)
+        jsonObject.put("channel", AppConstants.CHANNEL_KEY)
         return instance.money(LoginHelper.instance.getmToken(), UEncrypt.encrypt_AES(jsonObject.toString(), AppConstants.DES_KEY))
 
     }
 
+
+    /**
+     * 邀请收徒
+     */
+    fun invite(): Observable<InviteModle> {
+        val jsonObject = JSONObject()
+        jsonObject.put("channel", AppConstants.CHANNEL_KEY)
+        return ApiManager.instance.invite(LoginHelper.instance.getmToken(), UEncrypt.encrypt_AES(jsonObject.toString(), AppConstants.DES_KEY))
+    }
 
 }

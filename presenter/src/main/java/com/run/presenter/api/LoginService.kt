@@ -3,6 +3,8 @@ package com.run.login.api
 import com.run.config.modle.BaseModle
 import com.run.presenter.modle.login.LoginModle
 import com.run.presenter.modle.login.QQModle
+import com.run.presenter.modle.share.ShareModle
+import com.run.presenter.modle.share.ShareMsgModle
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Header
@@ -110,6 +112,36 @@ interface LoginService {
      */
     @GET("/web/User/feedback")
     fun feedback(@Header("xytoken") token: String, @Query("content") content: String): Observable<BaseModle>
+
+
+
+    //===========================================分享======================================================================
+    /**
+     * 获取分享内容
+     */
+    @GET("web/Article/share_record")
+    abstract fun share_record(@Header("xytoken") token: String, @Query("content") content: String): Observable<ShareModle>
+
+
+    /**
+     * 获取分享标题
+     */
+    @GET("web/config/share_msg")
+    abstract fun share_msg(@Header("xytoken") token: String, @Query("content") content: String): Observable<ShareMsgModle>
+
+
+    /**
+     * 举报
+     */
+    @GET("web/user/add_complaints")
+    abstract fun add_complaints(@Header("xytoken") token: String, @Query("content") content: String): Observable<BaseModle>
+
+
+    /**
+     * 收藏内容
+     */
+    @GET("web/User/details_collect")
+    abstract fun details_collect(@Header("xytoken") token: String, @Query("content") content: String): Observable<BaseModle>
 
 
 }

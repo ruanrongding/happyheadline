@@ -5,8 +5,8 @@ import android.content.Intent
 import android.view.View
 import android.widget.TextView
 import com.run.common.base.BaseActivity
-import com.run.common.dialog.ClearCacherDialog
 import com.run.common.dialog.DialogCallBack
+import com.run.common.dialog.DialogFragmentHelper
 import com.run.common.utils.UCache
 import com.run.common.utils.UVersion
 import com.run.presenter.contract.SettingContract
@@ -23,9 +23,11 @@ class SettingActivity : BaseActivity<SettingContract.SettingPresenter>(), Settin
             context.startActivity(Intent(context, SettingActivity::class.java))
         }
     }
+
     override fun initContentView(): Int {
         return R.layout.activity_setting
     }
+
     private lateinit var versionView: TextView
     private lateinit var cacheView: TextView
     override fun initViews() {
@@ -49,7 +51,9 @@ class SettingActivity : BaseActivity<SettingContract.SettingPresenter>(), Settin
         }
     }
 
-    override fun initPresenter(): SettingContract.SettingPresenter? { return SettingContract.SettingPresenter(this) }
+    override fun initPresenter(): SettingContract.SettingPresenter? {
+        return SettingContract.SettingPresenter(this)
+    }
 
     override fun initData() {
         var cache = "0M"
@@ -63,7 +67,7 @@ class SettingActivity : BaseActivity<SettingContract.SettingPresenter>(), Settin
     }
 
     private fun showClearCacheDialog() {
-        ClearCacherDialog.newInstance(this@SettingActivity).show(this@SettingActivity, callBack = object : DialogCallBack {
+        DialogFragmentHelper.newCacheDialog(this@SettingActivity).show(this@SettingActivity, callBack = object : DialogCallBack {
             override fun onNext() {
                 UCache.clearAllCache(this@SettingActivity)
                 cacheView.text = "0KB"

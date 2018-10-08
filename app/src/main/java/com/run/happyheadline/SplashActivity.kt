@@ -5,7 +5,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.run.common.dialog.DialogCallBack
-import com.run.common.dialog.PermissionDialog
+import com.run.common.dialog.DialogFragmentHelper
 import com.run.common.helper.SharedPreferenceHelper
 import com.run.common.utils.ULog
 import com.run.common.utils.UPermission
@@ -73,7 +73,7 @@ class SplashActivity : AppCompatActivity() {
      */
     private fun requestPermissionDialog() {
         ULog.d(TAG, "权限没通过，请求用户再次确认")
-        PermissionDialog.newInstance(this@SplashActivity).show(this@SplashActivity, callBack = object : DialogCallBack {
+        DialogFragmentHelper.newPermissionDialog(this@SplashActivity).show(this@SplashActivity, callBack = object : DialogCallBack {
             override fun onNext() {
                 ULog.d(TAG, "重新请求权限")
                 checkPermission()
