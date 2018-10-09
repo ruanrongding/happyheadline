@@ -28,17 +28,105 @@ class InviteModle : BaseModle() {
      * share : {"title":"我为立赚带盐，邀请您也一起来~","share_picture":"http://liz.szhuanww.com/static/img/icon.png","content_describe":"大家一起来，赚$_$得很简单，手指一点，就可以轻松得$_$收溢！！"}
      */
 
-    var explain: String? = null
-    var text: String? = null
-    var count_invite: Int = 0
-    var list: Int = 0
-    var count_apprentice: String? = null
-    var count_all: String? = null
-    var url: String? = null
-    var friend_url: String? = null
-    var share: ShareBean? = null
-    var activity_type: Int = 0
-    var invite_top_img: String? = null
+    private var explain: String? = null
+    private var text: String? = null
+    private var count_invite: Int = 0
+    private var list: Int = 0
+    private var count_apprentice: String? = null
+    private var count_all: String? = null
+    private var url: String? = null
+    private var friend_url: String? = null
+    private var share: ShareBean? = null
+    private var activity_type: Int = 0
+    private var invite_top_img: String? = null
+
+    fun getActivity_type(): Int {
+        return activity_type
+    }
+
+    fun setActivity_type(activity_type: Int) {
+        this.activity_type = activity_type
+    }
+
+    fun getInvite_top_img(): String? {
+        return invite_top_img
+    }
+
+    fun setInvite_top_img(invite_top_img: String) {
+        this.invite_top_img = invite_top_img
+    }
+
+    fun getExplain(): String? {
+        return explain
+    }
+
+    fun setExplain(explain: String) {
+        this.explain = explain
+    }
+
+    fun getText(): String? {
+        return text
+    }
+
+    fun setText(text: String) {
+        this.text = text
+    }
+
+    fun getCount_invite(): Int {
+        return count_invite
+    }
+
+    fun setCount_invite(count_invite: Int) {
+        this.count_invite = count_invite
+    }
+
+    fun getList(): Int {
+        return list
+    }
+
+    fun setList(list: Int) {
+        this.list = list
+    }
+
+    fun getCount_apprentice(): String? {
+        return count_apprentice
+    }
+
+    fun setCount_apprentice(count_apprentice: String) {
+        this.count_apprentice = count_apprentice
+    }
+
+    fun getCount_all(): String? {
+        return count_all
+    }
+
+    fun setCount_all(count_all: String) {
+        this.count_all = count_all
+    }
+
+    fun getUrl(): String? {
+        return url
+    }
+
+    fun setUrl(url: String) {
+        this.url = url
+    }
+
+    fun getFriend_url(): String? {
+        return friend_url
+    }
+
+    fun setFriend_url(friend_url: String) {
+        this.friend_url = friend_url
+    }
+
+    fun getShare(): ShareBean? {
+        return share
+    }
+
+    fun setShare(share: ShareBean) {
+        this.share = share
+    }
 
     class ShareBean {
         /**

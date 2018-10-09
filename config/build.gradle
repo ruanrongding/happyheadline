@@ -57,4 +57,7 @@ dependencies {
 
     //微信
     api 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
+
+    //权限管理
+    api 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar'
 }

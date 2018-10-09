@@ -342,4 +342,38 @@ object ApiManager {
         return ApiManager.instance.invite(LoginHelper.instance.getmToken(), UEncrypt.encrypt_AES(jsonObject.toString(), AppConstants.DES_KEY))
     }
 
+
+    /**
+     * 点赞
+     */
+    fun like_post(details_id: Int, type: Int): Observable<PostModle> {
+        val jsonObject = JSONObject()
+        jsonObject.put("details_id", details_id)
+        jsonObject.put("type", type)
+        jsonObject.put("channel", AppConstants.CHANNEL_KEY)
+        return instance.like_post(LoginHelper.instance.getmToken(), UEncrypt.encrypt_AES(jsonObject.toString(), AppConstants.DES_KEY))
+    }
+
+
+    /**
+     * 取消点赞
+     */
+    fun post_del(details_id: Int, type: Int): Observable<PostModle> {
+        val jsonObject = JSONObject()
+        jsonObject.put("details_id", details_id)
+        jsonObject.put("type", type)
+        jsonObject.put("channel", AppConstants.CHANNEL_KEY)
+        return instance.post_del(LoginHelper.instance.getmToken(), UEncrypt.encrypt_AES(jsonObject.toString(), AppConstants.DES_KEY))
+    }
+
+
+    /**
+     * 任务列表
+     */
+    fun task_list(): Observable<TaskModle> {
+        val jsonObject = JSONObject()
+        jsonObject.put("channel", AppConstants.CHANNEL_KEY)
+        return instance.task_list(LoginHelper.instance.getmToken(), UEncrypt.encrypt_AES(jsonObject.toString(), AppConstants.DES_KEY))
+    }
+
 }

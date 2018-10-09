@@ -6,9 +6,11 @@ import com.run.presenter.modle.login.QQModle
 import com.run.presenter.modle.share.ShareModle
 import com.run.presenter.modle.share.ShareMsgModle
 import io.reactivex.Observable
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.Query
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import okhttp3.ResponseBody
+import retrofit2.Call
+import retrofit2.http.*
 
 
 /**
@@ -142,6 +144,19 @@ interface LoginService {
      */
     @GET("web/User/details_collect")
     abstract fun details_collect(@Header("xytoken") token: String, @Query("content") content: String): Observable<BaseModle>
+
+
+    /**
+     * 个人中心 – 签到
+     */
+    @GET("web/user/sign")
+    abstract fun sign(@Header("xytoken") token: String, @Query("content") content: String): Observable<BaseModle>
+
+
+    @Multipart
+    @POST("web/Uploading/upload")
+    abstract fun upload(@Header("xytoken") token: String, @Part("description") description: RequestBody,
+                        @Part file: MultipartBody.Part): Call<ResponseBody>
 
 
 }

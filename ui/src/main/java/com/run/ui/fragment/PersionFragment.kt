@@ -61,6 +61,8 @@ class PersionFragment : BaseFragment<PersionContract.PersionPresenter>(), Persio
         view.findViewById<View>(R.id.walletLayout).setOnClickListener(this)
         view.findViewById<View>(R.id.withdrawLayout).setOnClickListener(this)
         view.findViewById<View>(R.id.inviteLayout).setOnClickListener(this)
+        view.findViewById<View>(R.id.taskLayout).setOnClickListener(this)
+        view.findViewById<View>(R.id.userInfoLayout).setOnClickListener(this)
     }
 
 
@@ -76,6 +78,8 @@ class PersionFragment : BaseFragment<PersionContract.PersionPresenter>(), Persio
             R.id.apprenticeLayout -> ApprenticeListActivity.newInstance(activity!!)
             R.id.withdrawLayout -> WithDrawActivity.newInstance(activity!!)
             R.id.inviteLayout -> InviteActivity.newInstance(activity!!)
+            R.id.taskLayout -> TaskCenterActivity.newInstance(activity!!)
+            R.id.userInfoLayout -> EditPersionActivity.newInstance(activity!!)
         }
     }
 

@@ -100,6 +100,7 @@ class SplashActivity : AppCompatActivity() {
         Observable.timer(1, TimeUnit.SECONDS).subscribe {
             if (SharedPreferenceHelper.checkHasOpenGuide(this@SplashActivity)) {
                 MainActivity.newInstance(this@SplashActivity)
+                finish()
             } else {
                 GuideActivity.newInstance(this@SplashActivity)
             }

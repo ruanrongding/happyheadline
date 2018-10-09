@@ -11,6 +11,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.run.common.base.BaseActivity
 import com.run.common.dialog.DialogCallBack
 import com.run.common.dialog.DialogFragmentHelper
+import com.run.common.utils.UStatusBar
 import com.run.presenter.contract.IncomeModle
 import com.run.presenter.contract.WithDrawContract
 import com.run.ui.R
@@ -20,6 +21,7 @@ import kotlinx.android.synthetic.main.item_withdraw_layout.*
 
 @Suppress("UNUSED_EXPRESSION")
 open class WithDrawActivity : BaseActivity<WithDrawContract.WithDrawPresenter>(), WithDrawContract.WithDrawView, BaseQuickAdapter.OnItemClickListener {
+
 
 
     companion object {
@@ -42,7 +44,11 @@ open class WithDrawActivity : BaseActivity<WithDrawContract.WithDrawPresenter>()
     private lateinit var withdrawView: View
     private lateinit var moenyView: TextView
     private lateinit var webView: WebView
+
     override fun initViews() {
+        UStatusBar.setDarkMode(this)
+        moenyView =findViewById(R.id.moenyView)
+
         mRecyclerView = findViewById(R.id.recyclerview)
         mRecyclerView.layoutManager = GridLayoutManager(this, 2)
         adpater = WithDrawAdapter()
@@ -54,7 +60,7 @@ open class WithDrawActivity : BaseActivity<WithDrawContract.WithDrawPresenter>()
             withDrawTypeView = headView!!.findViewById(R.id.withDrawTypeView)
             withDrawTypeView.isSelected = true
 
-            moenyView = headView!!.findViewById(R.id.moenyView)
+
 
             footerView = View.inflate(this, R.layout.footer_withdraw_layout, null)
             webView = footerView!!.findViewById(R.id.webView)
@@ -103,6 +109,7 @@ open class WithDrawActivity : BaseActivity<WithDrawContract.WithDrawPresenter>()
         webView.loadDataWithBaseURL(null, modle.msg, "text/html", "utf-8", null)
         withdrawView.isEnabled = money <= allMoney
     }
+
     /**
      * 绑定微信
      */
@@ -115,7 +122,6 @@ open class WithDrawActivity : BaseActivity<WithDrawContract.WithDrawPresenter>()
                     }
                 })
     }
-
     /**
      * 提现成功
      */
@@ -123,7 +129,6 @@ open class WithDrawActivity : BaseActivity<WithDrawContract.WithDrawPresenter>()
         WithDrawResultActivity.newInstance(this, 0, "")
         this.finish()
     }
-
     /**
      * 提现失败
      */

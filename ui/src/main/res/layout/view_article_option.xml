@@ -22,10 +22,10 @@
 
 
         <TextView
-            android:layout_marginLeft="@dimen/dp_5"
             android:id="@+id/tv_user_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_5"
             android:layout_marginRight="@dimen/dp_10"
             android:text="nick"
             android:textColor="@color/colorNick"
@@ -62,7 +62,7 @@
                 android:drawableLeft="@drawable/operation_ding_selector"
                 android:gravity="center"
                 android:text="0"
-                android:textColor="@color/colorMain"
+                android:textColor="@color/color_operation"
                 android:textSize="@dimen/sp_12" />
 
         </LinearLayout>
@@ -104,7 +104,7 @@
                 android:drawableLeft="@drawable/operation_cai_selector"
                 android:gravity="center"
                 android:text="0"
-                android:textColor="@color/colorMain"
+                android:textColor="@color/color_operation"
                 android:textSize="@dimen/sp_12" />
 
         </LinearLayout>
@@ -116,13 +116,12 @@
             android:layout_centerInParent="true"
             android:gravity="center"
             android:text="+1"
-            android:textColor="@color/colorMain"
+            android:textColor="@color/colorPrimary"
             android:textSize="@dimen/sp_20"
             android:textStyle="bold"
             android:visibility="gone" />
 
     </RelativeLayout>
-
 
     <LinearLayout
         android:id="@+id/ll_operation_comment"
@@ -147,8 +146,6 @@
 
 
     </LinearLayout>
-
-
 
     <LinearLayout
         android:id="@+id/ll_operation_share"

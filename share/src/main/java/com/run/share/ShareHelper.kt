@@ -4,15 +4,18 @@ package com.run.share
 import android.content.ClipboardManager
 import android.content.Context
 import android.view.View
-import android.widget.TextView
 import android.widget.Toast
 import com.run.common.BaseApplication
 import com.run.common.base.BaseObserver
+import com.run.common.utils.UCompositeDisposable
 import com.run.common.utils.ULog
 import com.run.common.view.MyBottomSheetDialog
+import com.run.config.modle.BaseModle
 import com.run.login.api.LoginManager
 import com.run.presenter.LoginHelper
+import com.run.presenter.api.ApiManager
 import com.run.presenter.modle.share.ShareModle
+import com.run.share.utils.ShareManager
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
@@ -51,9 +54,21 @@ class ShareHelper private constructor() {
             requestShare(context, 3, articleid)
             dialog.cancel()
         }
+        view.findViewById<View>(R.id.ll_share_save).setOnClickListener {
+            //收藏
+            doSave(context, articleid)
+            dialog.cancel()
+        }
+        view.findViewById<View>(R.id.ll_share_report).setOnClickListener {
+            //举报
+            if (!LoginHelper.instance.isLogin(context)) return@setOnClickListener
+            showReportDialog(context, articleid)
+            dialog.cancel()
+        }
 
         dialog.show()
     }
+
 
     private fun requestShare(context: Context, type: Int, articleid: Int) {
         if (mContext == null) mContext = context
@@ -96,6 +111,76 @@ class ShareHelper private constructor() {
         }
 
     }
+
+    /**
+     * 执行收藏操作
+     */
+    private fun doSave(context: Context?, articlid: Int) {
+        if (context != null) {
+            mContext = context
+        }
+        if (LoginHelper.instance.isLogin(mContext!!)) {
+            LoginManager.details_collect(articlid).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(object : BaseObserver<BaseModle>() {
+                        override fun onSuccess(o: BaseModle) {
+                            Toast.makeText(mContext, o.msg, Toast.LENGTH_SHORT).show()
+                        }
+
+                        override fun onError(errorType: Int, msg: String?) {
+                            Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show()
+                        }
+                    })
+        }
+    }
+
+
+    /**
+     * 举报弹窗
+     */
+    private fun showReportDialog(context: Context?, articleid: Int) {
+        if (context == null) return
+        mContext = context
+        val dialog = MyBottomSheetDialog(mContext!!)
+        val view = View.inflate(mContext, R.layout.dialog_report_layout, null)
+        dialog.setContentView(view)
+        view.findViewById<View>(R.id.tv_cancle).setOnClickListener { dialog.cancel() }
+        view.findViewById<View>(R.id.tv_report_1).setOnClickListener {
+            doReport(articleid, "内容质量差（不好看）")
+            dialog.cancel()
+        }
+        view.findViewById<View>(R.id.tv_report_2).setOnClickListener {
+            doReport(articleid, "内容有重复（坟贴等）")
+            dialog.cancel()
+        }
+        view.findViewById<View>(R.id.tv_report_3).setOnClickListener {
+            doReport(articleid, "内容太老旧（之前看过）")
+            dialog.cancel()
+        }
+        view.findViewById<View>(R.id.tv_report_4).setOnClickListener {
+            doReport(articleid, "广告色情/政治/侮辱")
+            dialog.cancel()
+        }
+        view.findViewById<View>(R.id.tv_report_5).setOnClickListener {
+            doReport(articleid, "其他屏蔽理由")
+            dialog.cancel()
+        }
+        dialog.show()
+
+    }
+
+    private fun doReport(articleid: Int, content: String) {
+        LoginManager.add_complaints(articleid, content).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(object : BaseObserver<BaseModle>() {
+                    override fun onSuccess(o: BaseModle) {
+                        Toast.makeText(mContext, o.msg, Toast.LENGTH_SHORT).show()
+                    }
+
+                    override fun onError(errorType: Int, msg: String?) {
+                        Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show()
+                    }
+                })
+    }
+
 
     companion object {
         private var shareHelper: ShareHelper? = null

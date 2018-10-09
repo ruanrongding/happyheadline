@@ -46,6 +46,7 @@ class GuideActivity : BaseActivity<Nothing>() {
                     //去到主页面
                     SharedPreferenceHelper.openGuide(this@GuideActivity)
                     MainActivity.newInstance(this@GuideActivity)
+                    finish()
                 }
             }
             return imageView

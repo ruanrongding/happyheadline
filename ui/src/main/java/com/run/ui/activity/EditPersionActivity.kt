@@ -8,6 +8,7 @@ import com.run.common.base.BaseActivity
 import com.run.common.utils.UGlide
 import com.run.presenter.contract.EditPersionContract
 import com.run.presenter.modle.UserInfoModile
+import com.run.presenter.upload.UploadHelper
 import com.run.ui.R
 import com.run.ui.login.BindPhoneActivity
 import kotlinx.android.synthetic.main.activity_edit_persion.*
@@ -26,13 +27,13 @@ class EditPersionActivity : BaseActivity<EditPersionContract.EditPresionPresente
         return R.layout.activity_edit_persion
     }
 
-
     override fun initViews() {
         backView.setOnClickListener { finish() }
         mobileLayout.setOnClickListener { if (mobileView.text.length > 4) showMsg("您的账号已经绑定手机号码") else BindPhoneActivity.newInstance(this) }
         nickLayout.setOnClickListener { ModifyNumberActivity.newInstance(this, 0, ModifyNumberActivity.ModifyNick) }
         signerLayout.setOnClickListener { ModifyNumberActivity.newInstance(this, 1, ModifyNumberActivity.ModifySigner) }
         teacherLayout.setOnClickListener { if (apprenticeView.text.length > 4) showMsg("你的账号已经绑定过师傅") else ModifyNumberActivity.newInstance(this, 2, ModifyNumberActivity.BindTeacher) }
+        headerView.setOnClickListener { UploadHelper.instance.showUploadDialog(this) }
     }
 
     override fun initPresenter(): EditPersionContract.EditPresionPresenter? {
@@ -52,7 +53,6 @@ class EditPersionActivity : BaseActivity<EditPersionContract.EditPresionPresente
         mobileView.text = if (TextUtils.isEmpty(data.mobile)) "待绑定" else data.mobile
     }
 
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (resultCode == Activity.RESULT_OK) {
             val msg = data!!.getStringExtra("MODIFYMSG")
@@ -60,6 +60,7 @@ class EditPersionActivity : BaseActivity<EditPersionContract.EditPresionPresente
                 ModifyNumberActivity.ModifyNick -> nickView.text = msg
                 ModifyNumberActivity.ModifySigner -> signerView.text = msg
                 ModifyNumberActivity.BindTeacher -> apprenticeView.text = msg
+                else -> UploadHelper.instance.doResult(requestCode, resultCode, data)
             }
         }
     }

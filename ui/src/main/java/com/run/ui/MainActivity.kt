@@ -1,5 +1,7 @@
 package com.run.ui
+
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Handler
 import android.support.v4.app.Fragment
@@ -14,17 +16,18 @@ import com.run.common.utils.UStatusBar
 import com.run.common.view.NoScrollViewPager
 import com.run.presenter.LoginHelper
 import com.run.presenter.contract.MainContract
+import com.run.ui.activity.TaskCenterActivity
 import com.run.ui.fragment.FindFragment
 import com.run.ui.fragment.HomeFragment
 import com.run.ui.fragment.NewsFragment
 import com.run.ui.fragment.PersionFragment
+
 @Suppress("JAVA_CLASS_ON_COMPANION")
 class MainActivity : BaseActivity<MainContract.MainPresenter>(), MainContract.MainView {
     companion object {
         val TAG: String = MainActivity.javaClass.name
-        fun newInstance(context: Activity) {
+        fun newInstance(context: Context) {
             context.startActivity(Intent(context, MainActivity::class.java))
-            context.finish()
         }
     }
 
@@ -47,7 +50,12 @@ class MainActivity : BaseActivity<MainContract.MainPresenter>(), MainContract.Ma
         vedioView = findViewById(R.id.vedioView)
         indexView.setOnClickListener { setStatus(0) }
         communityView.setOnClickListener { setStatus(1) }
-        vedioView.setOnClickListener { setStatus(2) }
+        vedioView.setOnClickListener {
+            //setStatus(2)
+            if (LoginHelper.instance.isLogin(this)) {
+                TaskCenterActivity.newInstance(this)
+            }
+        }
         persionView.setOnClickListener {
             if (LoginHelper.instance.isLogin(this)) {
                 setStatus(3)
@@ -111,6 +119,7 @@ class MainActivity : BaseActivity<MainContract.MainPresenter>(), MainContract.Ma
 
     //======================================= 退出应用 ==============================================
     private var mIsExit: Boolean = false
+
     override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             if (mIsExit) {

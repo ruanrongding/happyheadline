@@ -20,6 +20,7 @@ class WithDrawBillFragment : BaseListFragment<WithDrawBillContract.WithDrawBillP
 
     private var headView: View? = null
     private lateinit var adapter: DrawRecordAdapter
+    
     override fun initData() {
         adapter = DrawRecordAdapter()
         initAdapter(adapter)

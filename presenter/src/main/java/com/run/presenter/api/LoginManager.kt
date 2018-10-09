@@ -20,7 +20,7 @@ import org.json.JSONObject
 object LoginManager {
 
     private var apiService: LoginService? = null//登录
-    private val instance: LoginService
+    val instance: LoginService
         get() {
             if (apiService == null) {
                 synchronized(LoginService::class.java) {
@@ -239,13 +239,42 @@ object LoginManager {
      */
     fun details_collect(details_id: Int): Observable<BaseModle> {
         val jsonObject = JSONObject()
-        try {
-            jsonObject.put("details_id", details_id)
-            jsonObject.put("channel", AppConstants.CHANNEL_KEY)
-        } catch (e: JSONException) {
-            e.printStackTrace()
-        }
+        jsonObject.put("details_id", details_id)
+        jsonObject.put("channel", AppConstants.CHANNEL_KEY)
+
 
         return instance.details_collect(LoginHelper.instance.getmToken()!!, UEncrypt.encrypt_AES(jsonObject.toString(), AppConstants.DES_KEY))
     }
+
+
+    /**
+     * 签到
+     */
+    fun sign(): Observable<BaseModle> {
+        val jsonObject = JSONObject()
+        jsonObject.put("channel", AppConstants.CHANNEL_KEY)
+        return instance.sign(LoginHelper.instance.getmToken()!!, UEncrypt.encrypt_AES(jsonObject.toString(), AppConstants.DES_KEY))
+    }
+
+    /**
+     * 修改头像
+     */
+    fun modifyUserInco(head_avatar: String): Observable<BaseModle> {
+        val jsonObject = JSONObject()
+        jsonObject.put("head_avatar", head_avatar)
+        jsonObject.put("channel", AppConstants.CHANNEL_KEY)
+        return instance.user_save(LoginHelper.instance.getmToken()!!, UEncrypt.encrypt_AES(jsonObject.toString(), AppConstants.DES_KEY))
+    }
+
+    /**
+     * 修改背景
+     */
+    fun modifyBg(background: String): Observable<BaseModle> {
+        val jsonObject = JSONObject()
+        jsonObject.put("background", background)
+        jsonObject.put("channel", AppConstants.CHANNEL_KEY)
+        return instance.user_save(LoginHelper.instance.getmToken()!!, UEncrypt.encrypt_AES(jsonObject.toString(), AppConstants.DES_KEY))
+
+    }
+
 }

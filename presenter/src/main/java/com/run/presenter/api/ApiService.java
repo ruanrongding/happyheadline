@@ -15,6 +15,8 @@ import com.run.presenter.modle.IncomeResultModle;
 import com.run.presenter.modle.InviteModle;
 import com.run.presenter.modle.MsgModle;
 import com.run.presenter.modle.MsgTypeModle;
+import com.run.presenter.modle.PostModle;
+import com.run.presenter.modle.TaskModle;
 import com.run.presenter.modle.UserInfoModile;
 import com.run.presenter.modle.UserModle;
 import com.run.presenter.modle.WalletModle;
@@ -226,6 +228,30 @@ public interface ApiService {
      */
     @GET("web/user/invite")
     Observable<InviteModle> invite(@Header("xytoken") String token, @Query("content") String content);
+
+
+
+    /**
+     * 点赞
+     */
+    @GET("web/User/like_post")
+    Observable<PostModle> like_post(@Header("xytoken") String token, @Query("content") String content);
+
+    /**
+     * 取消点赞
+     */
+    @GET("web/User/post_del")
+    Observable<PostModle> post_del(@Header("xytoken") String token, @Query("content") String content);
+
+
+
+    /**
+     * 任务列表
+     */
+    @GET("web/user/task_list")
+    Observable<TaskModle> task_list(@Header("xytoken") String token, @Query("content") String content);
+
+
 
 
 }
